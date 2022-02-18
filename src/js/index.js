@@ -2,6 +2,7 @@ require("@babel/polyfill");
 import Search from "./model/Search";
 import { elements, renderLoader, clearLoader } from "./view/base";
 import * as searchView from './view/searchView';
+import Recipe from "./model/Recipe";
 
 /*
 *web app төлөв
@@ -16,7 +17,7 @@ const state = {};
 const controlSearch = async () => {
   // console.log('дарагдлаа');
   // 1. вэбээс хайлтын түлхүүр үгийг гаргаж авах
-    //const query = 'pizza';
+    
     const query = searchView.getInput();
   
   // хоосон эсэхийг шалгах
@@ -33,7 +34,7 @@ const controlSearch = async () => {
     await state.search.doSearch();
 
     // 5.Хайлтын үр дүнг дэлгэцэнд үзүүлнэ
-    // console.log(state.search.result);
+    
     clearLoader();
     if (state.search.result === undefined) alert('Хайлт илэрцгүй....');
     else searchView.renderRecipes(state.search.result);
@@ -46,3 +47,19 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault(); 
   controlSearch();
 });
+
+// дарсан товч олох
+elements.pageButtons.addEventListener('click', e => {
+  const btn = e.target.closest('.btn-inline');
+
+  if(btn) {
+    // хуудас шилжих товч
+    const gotoPageNumber = parseInt(btn.dataset.goto, 10); // бүхэлдэх тоо 10т тооллын систем
+    searchView.clearSearchResult();
+    searchView.renderRecipes(state.search.result, gotoPageNumber);
+  }
+});
+
+//туршилт
+const r = new Recipe(47746);
+r.getRecipe();

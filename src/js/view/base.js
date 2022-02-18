@@ -3,6 +3,7 @@ export const elements = {
     searchInput: document.querySelector('.search__field'),
     searchResultList: document.querySelector('.results__list'),
     searchResultDiv: document.querySelector('.results'),
+    pageButtons: document.querySelector('.results__pages'),
     
 };
 
@@ -18,12 +19,13 @@ export const clearLoader = () => {
 
 export const renderLoader = parent => {
     const loader = `
-    <div class="${elementStrings.loader}">
-                <svg>
-                    <use href="img/icon.svg#icon-cw"></use>
-                </svg>>
-            </div>
+    <div class= "${elementStrings.loader}" >
+        <svg>
+            <use href="img/icons.svg#icon-cw"></use>
+        </svg>>
+    </div>
     `;
+
     parent.insertAdjacentHTML('afterbegin', loader);
 };
 
