@@ -1,6 +1,7 @@
 {
   "name": "myproject",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
@@ -23,9 +24,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
-    "axios": "^0.26.0",
-    "loadash": "^1.0.0",
-    "lodash": "^4.17.21"
-  },
-  "description": ""
+    "axios": "^0.19.1",
+    "lodash": "^4.17.15",
+    "uniqid": "^5.4.0"
+  }
 }
